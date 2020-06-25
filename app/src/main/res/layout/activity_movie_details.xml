@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".models.MovieDetailsActivity">
+    tools:context=".models.MovieDetailsActivity"
+    android:background="#2C2B2E">
 
     <TextView
         android:id="@+id/tvTitle"
@@ -16,20 +17,23 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
+        android:fontFamily="@font/carter_one"
         android:textAppearance="@android:style/TextAppearance.Large"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
         tools:text="Movie Title" />
 
     <RatingBar
         android:id="@+id/rbVoteAverage"
-        style="@style/Widget.AppCompat.RatingBar.Small"
+        style="@android:style/Widget.Holo.RatingBar.Indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvTitle"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginStart="-1dp"
-        android:layout_marginLeft="-1dp"
-        android:layout_marginTop="13dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="9dp"
         android:numStars="5"
         android:stepSize="0.5" />
 
@@ -37,15 +41,17 @@
         android:id="@+id/tvOverview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/rbVoteAverage"
         android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="2dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginTop="69dp"
-        android:layout_marginEnd="-2dp"
-        android:layout_marginRight="-2dp"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentRight="false"
+        android:layout_marginStart="11dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="-10dp"
+        android:fontFamily="@font/amaranth"
+        android:textColor="#B5B3B3"
+        android:textSize="17sp"
         tools:text="Overview" />
 </RelativeLayout>
 

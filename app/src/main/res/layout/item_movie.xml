@@ -8,7 +8,7 @@
     <ImageView
         android:id="@+id/ivPoster"
         android:layout_width="120dp"
-        android:layout_height="210dp"
+        android:layout_height="200dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
@@ -25,7 +25,9 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="3dp"
         android:layout_toEndOf="@+id/ivPoster"
-        android:textSize="24sp"
+        android:fontFamily="@font/carter_one"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
         tools:text="Fast and Furious Edition 1002" />
 
     <TextView
@@ -38,6 +40,8 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="4dp"
         android:layout_toEndOf="@+id/ivPoster"
+        android:fontFamily="@font/amaranth"
+        android:textColor="#B5B3B3"
         tools:text="This movie is about cars and people who like driving them and it kinda gets boring after like the third one." />
 
 </RelativeLayout>
