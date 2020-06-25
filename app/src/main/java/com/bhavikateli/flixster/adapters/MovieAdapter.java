@@ -13,14 +13,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bhavikateli.flixster.MovieDetailsActivity;
 import com.bhavikateli.flixster.R;
 import com.bhavikateli.flixster.models.Movie;
-import com.bhavikateli.flixster.MovieDetailsActivity;
 import com.bumptech.glide.Glide;
 
 import org.parceler.Parcels;
 
 import java.util.List;
+
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
 
@@ -79,10 +81,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             String imageURL;
             if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
                 imageURL = movie.getBackdropPath();
-                Glide.with(context).load(imageURL).placeholder(R.drawable.landscape).into(ivPoster);
+                //Glide.with(context).load(imageURL).placeholder(R.drawable.landscape).into(ivPoster);
+                Glide.with(context).load(imageURL).placeholder(R.drawable.landscape).transform(new RoundedCornersTransformation(30, 10)).into(ivPoster);
             }else{
                 imageURL = movie.getPosterPath();
-                Glide.with(context).load(imageURL).placeholder(R.drawable.portrait).into(ivPoster);
+                Glide.with(context).load(imageURL).placeholder(R.drawable.portrait).transform(new RoundedCornersTransformation(30, 10)).into(ivPoster);
             }
 
         }
