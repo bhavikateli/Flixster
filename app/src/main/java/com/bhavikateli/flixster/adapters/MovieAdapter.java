@@ -1,6 +1,7 @@
 package com.bhavikateli.flixster.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,7 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bhavikateli.flixster.R;
 import com.bhavikateli.flixster.models.Movie;
+import com.bhavikateli.flixster.MovieDetailsActivity;
 import com.bumptech.glide.Glide;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -54,17 +58,18 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         return movies.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView tvTitle;
         TextView tvOverview;
         ImageView ivPoster;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder (@NonNull View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvOverview = itemView.findViewById(R.id.tvOverview);
             ivPoster = itemView.findViewById(R.id.ivPoster);
+            itemView.setOnClickListener(this);
         }
         public void bind(Movie movie) {
             tvTitle.setText((movie.getTitle()));
@@ -78,6 +83,26 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                 imageURL = movie.getPosterPath();
             }
             Glide.with(context).load(imageURL).into(ivPoster);
+        }
+
+        @Override
+        public void onClick(View view) {
+            //gets the position of the item
+            int position = getAdapterPosition();
+            //check if its a valid position
+            if (position != RecyclerView.NO_POSITION){
+                //grab the movie
+                Movie movie = movies.get(position);
+                //Create an Intent to display MovieDetailsActivity
+                Intent intent = new Intent(context, MovieDetailsActivity.class);
+                //Pass the movie as an extra serialized via Parcels.wrap()
+                intent.putExtra(Movie.class.getSimpleName(), Parcels.wrap(movie));
+                //show the activity
+                context.startActivity(intent);
+
+            }
+
+
         }
     }
 }
