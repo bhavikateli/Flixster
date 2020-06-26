@@ -54,18 +54,18 @@ public class MovieDetailsActivity extends AppCompatActivity {
         rbVoteAverage.setRating(voteAverage = voteAverage > 0 ? voteAverage / 2.0f : voteAverage);
 
         //movie trailer
-        String url =  "https://api.themoviedb.org/3/movie/" + movie.getId() + "/videos?api_key=b2fcbccf054a49b37b941d24b54403d2&language=en-US";
+        String url = "https://api.themoviedb.org/3/movie/" + movie.getId() + "/videos?api_key=b2fcbccf054a49b37b941d24b54403d2&language=en-US";
         //https://api.themoviedb.org/3/movie/554993/videos?api_key=b2fcbccf054a49b37b941d24b54403d2&language=en-US
         AsyncHttpClient client = new AsyncHttpClient();
 
-        client.get(url , new JsonHttpResponseHandler(){
+        client.get(url, new JsonHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Headers headers, JSON json) {
                 JSONObject jsonObject = json.jsonObject;
 
                 try {
-                     final String youtubeKey = jsonObject.getJSONArray("results").getJSONObject(0).getString("key");
+                    final String youtubeKey = jsonObject.getJSONArray("results").getJSONObject(0).getString("key");
 
                     btnTrailer.setOnClickListener((new View.OnClickListener() {
                         @Override

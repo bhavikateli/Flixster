@@ -26,22 +26,24 @@ public class Movie {
         voteAverage = jsonObject.getDouble("vote_average");
         id = jsonObject.getInt("id");
     }
-    public Movie() {}
+
+    public Movie() {
+    }
 
     public static List<Movie> fromJsonArray(JSONArray movieJsonArray) throws JSONException {
         List<Movie> movies = new ArrayList<>();
-        for(int i = 0; i < movieJsonArray.length(); i++){
+        for (int i = 0; i < movieJsonArray.length(); i++) {
             movies.add(new Movie(movieJsonArray.getJSONObject(i)));
         }
         return movies;
     }
 
     public String getPosterPath() {
-        return String.format("https://image.tmdb.org/t/p/w342/%s",posterPath);
+        return String.format("https://image.tmdb.org/t/p/w342/%s", posterPath);
     }
 
-    public String getBackdropPath(){
-        return String.format("https://image.tmdb.org/t/p/w342/%s",backdropPath);
+    public String getBackdropPath() {
+        return String.format("https://image.tmdb.org/t/p/w342/%s", backdropPath);
     }
 
     public String getTitle() {
@@ -52,7 +54,9 @@ public class Movie {
         return overview;
     }
 
-    public Double getVoteAverage(){ return voteAverage; }
+    public Double getVoteAverage() {
+        return voteAverage;
+    }
 
     public int getId() {
         return this.id;
