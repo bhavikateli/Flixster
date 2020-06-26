@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".models.MovieDetailsActivity"
-    android:background="#2C2B2E">
+    android:background="#2C2B2E"
+    tools:context=".MovieDetailsActivity">
 
     <TextView
         android:id="@+id/tvTitle"
@@ -53,6 +53,17 @@
         android:textColor="#B5B3B3"
         android:textSize="17sp"
         tools:text="Overview" />
+
+    <Button
+        android:id="@+id/btnTrailer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="46dp"
+        android:layout_marginEnd="107dp"
+        android:text="Trailer" />
+
 </RelativeLayout>
 
 
