@@ -104,7 +104,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                 intent.putExtra(Movie.class.getSimpleName(), Parcels.wrap(movie));
                 //show the activity
                 context.startActivity(intent);
-
             }
 
 
