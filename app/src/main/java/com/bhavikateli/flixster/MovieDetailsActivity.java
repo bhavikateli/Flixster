@@ -4,12 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.RatingBar;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bhavikateli.flixster.databinding.ActivityMovieDetailsBinding;
 import com.bhavikateli.flixster.models.Movie;
 import com.bhavikateli.flixster.models.MovieTrailerActivity;
 import com.codepath.asynchttpclient.AsyncHttpClient;
@@ -25,33 +23,24 @@ public class MovieDetailsActivity extends AppCompatActivity {
 
     Movie movie;
 
-    //declare views
-    TextView tvTitle;
-    TextView tvOverview;
-    RatingBar rbVoteAverage;
-    Button btnTrailer;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movie_details);
-
-        tvTitle = (TextView) findViewById(R.id.tvTitle);
-        tvOverview = (TextView) findViewById(R.id.tvOverview);
-        rbVoteAverage = (RatingBar) findViewById(R.id.rbVoteAverage);
-        btnTrailer = findViewById(R.id.btnTrailer);
+        //ViewBinding
+        final ActivityMovieDetailsBinding binding = ActivityMovieDetailsBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
 
         //unwrap the movie passed through intent, using its simple name as a key
         movie = (Movie) Parcels.unwrap(getIntent().getParcelableExtra(Movie.class.getSimpleName()));
         Log.d("MovieDetailsActivity", String.format("Showing details for '%s'", movie.getTitle()));
 
         // set the text for overview and title
-        tvTitle.setText(movie.getTitle());
-        tvOverview.setText(movie.getOverview());
+        binding.tvTitle.setText(movie.getTitle());
+        binding.tvOverview.setText(movie.getOverview());
 
         float voteAverage = movie.getVoteAverage().floatValue();
-        rbVoteAverage.setRating(voteAverage = voteAverage > 0 ? voteAverage / 2.0f : voteAverage);
+        binding.rbVoteAverage.setRating(voteAverage = voteAverage > 0 ? voteAverage / 2.0f : voteAverage);
 
         //movie trailer
         String url = "https://api.themoviedb.org/3/movie/" + movie.getId() + "/videos?api_key=b2fcbccf054a49b37b941d24b54403d2&language=en-US";
@@ -67,7 +56,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
                 try {
                     final String youtubeKey = jsonObject.getJSONArray("results").getJSONObject(0).getString("key");
 
-                    btnTrailer.setOnClickListener((new View.OnClickListener() {
+                    binding.btnTrailer.setOnClickListener((new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             Intent intent = new Intent(MovieDetailsActivity.this, MovieTrailerActivity.class);
