@@ -40,8 +40,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     //inflates a layout from XML and returning the holder
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Log.d("MovieAdapter", "onCreateViewHolder");
-        View movieView =  LayoutInflater.from(context).inflate(R.layout.item_movie, parent, false);
-       return new ViewHolder(movieView);
+        View movieView = LayoutInflater.from(context).inflate(R.layout.item_movie, parent, false);
+        return new ViewHolder(movieView);
     }
 
     //populating the data into the item through the holder
@@ -66,24 +66,25 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         TextView tvOverview;
         ImageView ivPoster;
 
-        public ViewHolder (@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvOverview = itemView.findViewById(R.id.tvOverview);
             ivPoster = itemView.findViewById(R.id.ivPoster);
             itemView.setOnClickListener(this);
         }
+
         public void bind(Movie movie) {
             tvTitle.setText((movie.getTitle()));
             tvOverview.setText(movie.getOverview());
 
             //if phone in landscape
             String imageURL;
-            if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+            if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 imageURL = movie.getBackdropPath();
                 //Glide.with(context).load(imageURL).placeholder(R.drawable.landscape).into(ivPoster);
                 Glide.with(context).load(imageURL).placeholder(R.drawable.landscape).transform(new RoundedCornersTransformation(30, 10)).into(ivPoster);
-            }else{
+            } else {
                 imageURL = movie.getPosterPath();
                 Glide.with(context).load(imageURL).placeholder(R.drawable.portrait).transform(new RoundedCornersTransformation(30, 10)).into(ivPoster);
             }
@@ -95,7 +96,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             //gets the position of the item
             int position = getAdapterPosition();
             //check if its a valid position
-            if (position != RecyclerView.NO_POSITION){
+            if (position != RecyclerView.NO_POSITION) {
                 //grab the movie
                 Movie movie = movies.get(position);
                 //Create an Intent to display MovieDetailsActivity
