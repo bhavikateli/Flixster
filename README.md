@@ -30,12 +30,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<<<<<<< HEAD
-`![App Demo Link](gif/Demo.gif)`
-=======
 <img src='gif/Demo.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
->>>>>>> 0e82f4de1876c3c72dd86b7d53089c0900508ba4
 
 ## Notes
 
